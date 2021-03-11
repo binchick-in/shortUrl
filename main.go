@@ -28,6 +28,9 @@ func getLogFile() *os.File {
 	return f
 }
 
+// Open and ingest a json file and return a map
+// of key value pairs representing the lookup
+// structure for the app
 func getJsonFileData() map[string]string {
 	jsonLookupFile, err := ioutil.ReadFile("urlMap.json")
 	if err != nil {
@@ -54,10 +57,8 @@ func isValidPortNumber(rawPort string) bool {
 	return false
 }
 
-/*
-Pass a slice of strings, return only the non-empty
-strings in a new array
-*/
+
+// Pass a slice of strings, return only the non-empty strings in a new array
 func cleanSlice(i []string) []string {
 	var retVal []string
 
@@ -100,7 +101,6 @@ func main() {
 	logFile := getLogFile()
 	log.SetOutput(logFile)
 
-	// jsonLookupData := getJsonFileData()
 	var port string
 	if len(os.Args) >= 2 {
 		rawPortInput := os.Args[1]
